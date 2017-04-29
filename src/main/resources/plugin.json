@@ -1,0 +1,6 @@
+{
+    "name": "vote",
+    "mainClass": "ch.jamiete.hilda.vote.VotePlugin",
+    "version": "1.0.0",
+    "author": "jamietech"
+}
