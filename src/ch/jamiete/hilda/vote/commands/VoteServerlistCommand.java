@@ -18,7 +18,8 @@ package ch.jamiete.hilda.vote.commands;
 import java.util.ArrayList;
 import org.apache.commons.lang3.StringUtils;
 import ch.jamiete.hilda.Hilda;
-import ch.jamiete.hilda.commands.ChannelCommand;
+import ch.jamiete.hilda.commands.ChannelSeniorCommand;
+import ch.jamiete.hilda.commands.ChannelSubCommand;
 import ch.jamiete.hilda.vote.Vote;
 import ch.jamiete.hilda.vote.VotePlugin;
 import ch.jamiete.hilda.vote.VoteResponse;
@@ -28,11 +29,11 @@ import net.dv8tion.jda.core.MessageBuilder.Formatting;
 import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.entities.Message;
 
-public class VoteServerlistCommand extends ChannelCommand {
+public class VoteServerlistCommand extends ChannelSubCommand {
     private final VotePlugin plugin;
 
-    protected VoteServerlistCommand(final Hilda hilda, final VotePlugin plugin) {
-        super(hilda);
+    protected VoteServerlistCommand(final Hilda hilda, final ChannelSeniorCommand senior, final VotePlugin plugin) {
+        super(hilda, senior);
 
         this.plugin = plugin;
 

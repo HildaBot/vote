@@ -22,7 +22,8 @@ import java.util.concurrent.TimeUnit;
 import org.apache.commons.lang3.StringUtils;
 import ch.jamiete.hilda.Hilda;
 import ch.jamiete.hilda.Util;
-import ch.jamiete.hilda.commands.ChannelCommand;
+import ch.jamiete.hilda.commands.ChannelSeniorCommand;
+import ch.jamiete.hilda.commands.ChannelSubCommand;
 import ch.jamiete.hilda.commands.CommandManager;
 import ch.jamiete.hilda.vote.Vote;
 import ch.jamiete.hilda.vote.VotePlugin;
@@ -32,11 +33,11 @@ import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.entities.Member;
 import net.dv8tion.jda.core.entities.Message;
 
-public class VoteStartCommand extends ChannelCommand {
+public class VoteStartCommand extends ChannelSubCommand {
     private final VotePlugin plugin;
 
-    public VoteStartCommand(final Hilda hilda, final VotePlugin plugin) {
-        super(hilda);
+    public VoteStartCommand(final Hilda hilda, final ChannelSeniorCommand senior, final VotePlugin plugin) {
+        super(hilda, senior);
 
         this.plugin = plugin;
 

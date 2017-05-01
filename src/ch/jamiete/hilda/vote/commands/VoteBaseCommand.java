@@ -29,13 +29,13 @@ public class VoteBaseCommand extends ChannelSeniorCommand {
         this.setAliases(Arrays.asList(new String[] { "v" }));
         this.setDescription("Vote management system.");
 
-        this.registerSubcommand(new VoteCloseCommand(hilda, plugin));
-        this.registerSubcommand(new VoteDeleteCommand(hilda, plugin));
-        this.registerSubcommand(new VoteListCommand(hilda, plugin));
-        this.registerSubcommand(new VoteOpenCommand(hilda, plugin));
-        this.registerSubcommand(new VoteRegisterCommand(hilda, plugin));
-        this.registerSubcommand(new VoteServerlistCommand(hilda, plugin));
-        this.registerSubcommand(new VoteStartCommand(hilda, plugin));
+        this.registerSubcommand(new VoteCloseCommand(hilda, this, plugin));
+        this.registerSubcommand(new VoteDeleteCommand(hilda, this, plugin));
+        this.registerSubcommand(new VoteListCommand(hilda, this, plugin));
+        this.registerSubcommand(new VoteOpenCommand(hilda, this, plugin));
+        this.registerSubcommand(new VoteRegisterCommand(hilda, this, plugin));
+        this.registerSubcommand(new VoteServerlistCommand(hilda, this, plugin));
+        this.registerSubcommand(new VoteStartCommand(hilda, this, plugin));
     }
 
 }
