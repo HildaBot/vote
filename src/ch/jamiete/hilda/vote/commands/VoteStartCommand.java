@@ -53,7 +53,7 @@ public class VoteStartCommand extends ChannelSubCommand {
         final Vote vote = new Vote(this.hilda, this.plugin);
         vote.setId(this.plugin.getFreshID());
         vote.setOpener(member.getEffectiveName());
-        vote.setOpenerId(member.getUser().getDiscriminator());
+        vote.setOpenerId(member.getUser().getId());
         vote.setAvatar(member.getUser().getAvatarUrl());
         vote.setChannelId(message.getTextChannel().getId());
         vote.setCommencement(System.currentTimeMillis());

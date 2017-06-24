@@ -52,7 +52,7 @@ public class VoteDeleteCommand extends ChannelSubCommand {
             return;
         }
 
-        if (vote.getOpenerId() != member.getUser().getDiscriminator() || !member.hasPermission(message.getTextChannel(), Permission.MANAGE_CHANNEL)) {
+        if (vote.getOpenerId() != member.getUser().getId() || !member.hasPermission(message.getTextChannel(), Permission.MANAGE_CHANNEL)) {
             this.reply(message, "You don't have permission to use that command.");
             return;
         }
