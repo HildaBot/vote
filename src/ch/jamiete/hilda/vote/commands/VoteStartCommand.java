@@ -64,7 +64,7 @@ public class VoteStartCommand extends ChannelSubCommand {
         vote.setQuestion(Util.combineSplit(0, arguments, " ").trim());
 
         if (vote.getQuestion().length() == 0 || StringUtils.isNumeric(arguments[0]) && vote.getQuestion().replace(arguments[0], "").trim().equals("")) {
-            this.usage(message, "start <question>", label);
+            this.usage(message, "<question>", label);
             return;
         }
 

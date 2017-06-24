@@ -41,7 +41,7 @@ public class VoteDeleteCommand extends ChannelSubCommand {
         final Member member = message.getGuild().getMember(message.getAuthor());
 
         if (arguments.length != 1) {
-            this.usage(message, "delete <id>", label);
+            this.usage(message, "<id>", label);
             return;
         }
 

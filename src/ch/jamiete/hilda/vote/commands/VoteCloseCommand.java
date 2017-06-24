@@ -41,7 +41,7 @@ public class VoteCloseCommand extends ChannelSubCommand {
     @Override
     public void execute(final Message message, final String[] arguments, final String label) {
         if (arguments.length != 1) {
-            this.usage(message, label + " <id>", label);
+            this.usage(message, "<id>", label);
             return;
         }
 
