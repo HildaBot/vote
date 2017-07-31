@@ -17,7 +17,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>ch.jamiete.hilda</groupId>
   <artifactId>vote</artifactId>
-  <version>1.0.1</version>
+  <version>1.0.2</version>
   <name>vote</name>
   <build>
     <sourceDirectory>src</sourceDirectory>
@@ -31,12 +31,18 @@
         </configuration>
       </plugin>
     </plugins>
+    <resources>
+      <resource>
+      	<directory>src/main/resources</directory>
+      	<filtering>true</filtering>
+      </resource>
+	</resources>
   </build>
   <dependencies>
   	<dependency>
   		<groupId>ch.jamiete.hilda</groupId>
   		<artifactId>Hilda</artifactId>
-  		<version>1.1.2</version>
+  		<version>1.1.4</version>
   	</dependency>
   </dependencies>
 </project>

@@ -92,6 +92,11 @@ public class VotePlugin extends HildaPlugin {
 
     @Override
     public void onDisable() {
+        this.save();
+    }
+
+    @Override
+    public void save() {
         final File folder = new File("data");
 
         if (!folder.isDirectory()) {
