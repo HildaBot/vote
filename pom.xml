@@ -17,7 +17,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>ch.jamiete.hilda</groupId>
   <artifactId>vote</artifactId>
-  <version>1.0.2</version>
+  <version>1.0.3</version>
   <name>vote</name>
   <build>
     <sourceDirectory>src</sourceDirectory>
@@ -42,7 +42,7 @@
   	<dependency>
   		<groupId>ch.jamiete.hilda</groupId>
   		<artifactId>Hilda</artifactId>
-  		<version>1.1.4</version>
+  		<version>1.1.5</version>
   	</dependency>
   </dependencies>
 </project>

@@ -143,6 +143,7 @@ public class VotePlugin extends HildaPlugin {
             final FileInputStream stream = new FileInputStream(file);
             final ObjectInputStream obj = new ObjectInputStream(stream);
 
+            @SuppressWarnings("unchecked")
             final ArrayList<Vote> list = (ArrayList<Vote>) obj.readObject();
 
             if (list != null && !list.isEmpty()) {
