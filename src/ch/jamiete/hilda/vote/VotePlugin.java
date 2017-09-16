@@ -115,7 +115,7 @@ public class VotePlugin extends HildaPlugin {
 
             obj.writeObject(this.votes);
 
-            Hilda.getLogger().info("Saved " + this.votes.size() + " votes to disk");
+            Hilda.getLogger().fine("Saved " + this.votes.size() + " votes to disk");
 
             obj.close();
             stream.close();
