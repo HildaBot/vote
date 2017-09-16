@@ -39,7 +39,7 @@ public class VoteOpenCommand extends ChannelSubCommand {
         this.plugin = plugin;
 
         this.setName("open");
-        this.setDescription("Lists the open votes that you haven't yet voted upon.");
+        this.setDescription("Lists the open votes that you haven't yet voted on.");
     }
 
     @Override
@@ -67,7 +67,10 @@ public class VoteOpenCommand extends ChannelSubCommand {
 
         final EmbedBuilder eb = new EmbedBuilder();
 
-        eb.setTitle("There are " + eligible.size() + " " + (eligible.size() == 1 ? "vote" : "votes") + " you haven't responded to:", null);
+        final StringBuilder title = new StringBuilder();
+        title.append("There ").append(eligible.size() == 1 ? "is" : "are").append(eligible.size());
+        title.append(eligible.size() == 1 ? "vote" : "votes").append(" that you haven't responded to yet");
+        eb.setTitle(title.toString(), null);
 
         for (final Vote vote : eligible) {
             final MessageBuilder mb = new MessageBuilder();
