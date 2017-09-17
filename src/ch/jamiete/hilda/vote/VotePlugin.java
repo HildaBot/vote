@@ -96,35 +96,6 @@ public class VotePlugin extends HildaPlugin {
     }
 
     @Override
-    public void save() {
-        final File folder = new File("data");
-
-        if (!folder.isDirectory()) {
-            folder.mkdir();
-        }
-
-        try {
-            final File file = new File(folder, "votes.hilda");
-
-            if (!file.exists()) {
-                file.createNewFile();
-            }
-
-            final FileOutputStream stream = new FileOutputStream("data/votes.hilda", false);
-            final ObjectOutputStream obj = new ObjectOutputStream(stream);
-
-            obj.writeObject(this.votes);
-
-            Hilda.getLogger().fine("Saved " + this.votes.size() + " votes to disk");
-
-            obj.close();
-            stream.close();
-        } catch (final Exception e) {
-            Hilda.getLogger().log(Level.SEVERE, "Failed to save votes to disk", e);
-        }
-    }
-
-    @Override
     public void onEnable() {
         this.getHilda().getCommandManager().registerChannelCommand(new VoteBaseCommand(this.getHilda(), this));
 
@@ -209,6 +180,35 @@ public class VotePlugin extends HildaPlugin {
      */
     public void remove(final Vote vote) {
         this.votes.remove(vote);
+    }
+
+    @Override
+    public void save() {
+        final File folder = new File("data");
+
+        if (!folder.isDirectory()) {
+            folder.mkdir();
+        }
+
+        try {
+            final File file = new File(folder, "votes.hilda");
+
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+
+            final FileOutputStream stream = new FileOutputStream("data/votes.hilda", false);
+            final ObjectOutputStream obj = new ObjectOutputStream(stream);
+
+            obj.writeObject(this.votes);
+
+            Hilda.getLogger().fine("Saved " + this.votes.size() + " votes to disk");
+
+            obj.close();
+            stream.close();
+        } catch (final Exception e) {
+            Hilda.getLogger().log(Level.SEVERE, "Failed to save votes to disk", e);
+        }
     }
 
 }
