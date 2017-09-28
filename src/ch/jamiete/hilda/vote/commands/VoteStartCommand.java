@@ -93,7 +93,7 @@ public class VoteStartCommand extends ChannelSubCommand {
         this.reply(message, eb.build());
 
         if (message.getGuild().getSelfMember().hasPermission(message.getTextChannel(), Permission.MESSAGE_MANAGE)) {
-            message.delete().queue();
+            message.delete().reason("I automatically delete some command invocations. If you don't want this to happen, remove my manage messages permission in the channel.").queue();
         }
     }
 
