@@ -85,7 +85,7 @@ public class VoteServerlistCommand extends ChannelSubCommand {
                 mb.append("% acceptance");
             }
 
-            eb.addField(StringUtils.abbreviate(vote.getQuestion(), 256), mb.build().getContent(), false);
+            eb.addField(StringUtils.abbreviate(vote.getQuestion(), 256), mb.build().getContentDisplay(), false);
         }
 
         this.reply(message, eb.build());
