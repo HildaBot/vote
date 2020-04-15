@@ -20,9 +20,11 @@ import ch.jamiete.hilda.commands.ChannelSeniorCommand;
 import ch.jamiete.hilda.commands.ChannelSubCommand;
 import ch.jamiete.hilda.vote.Vote;
 import ch.jamiete.hilda.vote.VotePlugin;
-import net.dv8tion.jda.core.Permission;
-import net.dv8tion.jda.core.entities.Member;
-import net.dv8tion.jda.core.entities.Message;
+import net.dv8tion.jda.api.Permission;
+import net.dv8tion.jda.api.entities.Member;
+import net.dv8tion.jda.api.entities.Message;
+
+import java.util.Objects;
 
 public class VoteDeleteCommand extends ChannelSubCommand {
     private final VotePlugin plugin;
@@ -47,12 +49,12 @@ public class VoteDeleteCommand extends ChannelSubCommand {
 
         final Vote vote = this.plugin.getVoteByID(arguments[0]);
 
-        if (vote == null || vote != null && !this.hilda.getBot().getTextChannelById(vote.getChannelId()).equals(message.getChannel())) {
+        if (vote == null || !Objects.equals(this.hilda.getBot().getTextChannelById(vote.getChannelId()), message.getChannel())) {
             this.reply(message, "I couldn't find that vote.");
             return;
         }
 
-        if (vote.getOpenerId() != member.getUser().getId() || !member.hasPermission(message.getTextChannel(), Permission.MANAGE_CHANNEL)) {
+        if (!vote.getOpenerId().equals(member.getUser().getId()) || !member.hasPermission(message.getTextChannel(), Permission.MANAGE_CHANNEL)) {
             this.reply(message, "You don't have permission to use that command.");
             return;
         }

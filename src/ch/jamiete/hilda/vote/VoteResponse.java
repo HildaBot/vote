@@ -17,6 +17,6 @@ package ch.jamiete.hilda.vote;
 
 public enum VoteResponse {
 
-    YEA, NAY, ABSTAIN;
+    YEA, NAY, ABSTAIN
 
 }

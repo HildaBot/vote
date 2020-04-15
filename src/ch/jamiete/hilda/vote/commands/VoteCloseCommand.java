@@ -21,8 +21,8 @@ import ch.jamiete.hilda.commands.ChannelSeniorCommand;
 import ch.jamiete.hilda.commands.ChannelSubCommand;
 import ch.jamiete.hilda.vote.Vote;
 import ch.jamiete.hilda.vote.VotePlugin;
-import net.dv8tion.jda.core.Permission;
-import net.dv8tion.jda.core.entities.Message;
+import net.dv8tion.jda.api.Permission;
+import net.dv8tion.jda.api.entities.Message;
 
 public class VoteCloseCommand extends ChannelSubCommand {
     private final VotePlugin plugin;

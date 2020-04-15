@@ -21,11 +21,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map.Entry;
 import java.util.concurrent.ScheduledFuture;
+import net.dv8tion.jda.api.EmbedBuilder;
+import net.dv8tion.jda.api.entities.Member;
+import net.dv8tion.jda.api.entities.TextChannel;
 import org.apache.commons.lang3.StringUtils;
 import ch.jamiete.hilda.Hilda;
-import net.dv8tion.jda.core.EmbedBuilder;
-import net.dv8tion.jda.core.entities.Member;
-import net.dv8tion.jda.core.entities.TextChannel;
 
 public class Vote implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -45,7 +45,7 @@ public class Vote implements Serializable {
 
     private Long commencement = Long.MIN_VALUE;
 
-    private final HashMap<String, VoteResponse> responses = new HashMap<String, VoteResponse>();
+    private final HashMap<String, VoteResponse> responses = new HashMap<>();
 
     /**
      * Instantiates an empty Vote. <b>Only use this where votes are being loaded from disk.</b>
@@ -77,7 +77,7 @@ public class Vote implements Serializable {
      */
     public void finish() {
         final TextChannel channel = this.hilda.getBot().getTextChannelById(this.channel_id);
-        channel.sendTyping();
+        channel.sendTyping().queue();
 
         final EmbedBuilder eb = new EmbedBuilder();
 
@@ -89,9 +89,9 @@ public class Vote implements Serializable {
             eb.setFooter("Vote " + this.id + " opened by " + this.opener + " with supermajority requirement of " + this.percent + " per cent", this.avatar);
         }
 
-        final ArrayList<Member> yea = new ArrayList<Member>();
-        final ArrayList<Member> nay = new ArrayList<Member>();
-        final ArrayList<Member> abstain = new ArrayList<Member>();
+        final ArrayList<Member> yea = new ArrayList<>();
+        final ArrayList<Member> nay = new ArrayList<>();
+        final ArrayList<Member> abstain = new ArrayList<>();
 
         for (final Entry<String, VoteResponse> entry : this.responses.entrySet()) {
             final Member member = channel.getGuild().getMemberById(entry.getKey());

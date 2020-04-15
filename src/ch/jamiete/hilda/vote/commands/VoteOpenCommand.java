@@ -17,6 +17,10 @@ package ch.jamiete.hilda.vote.commands;
 
 import java.util.ArrayList;
 import java.util.stream.Collectors;
+import net.dv8tion.jda.api.EmbedBuilder;
+import net.dv8tion.jda.api.MessageBuilder;
+import net.dv8tion.jda.api.entities.Member;
+import net.dv8tion.jda.api.entities.Message;
 import org.apache.commons.lang3.StringUtils;
 import ch.jamiete.hilda.Hilda;
 import ch.jamiete.hilda.commands.ChannelSeniorCommand;
@@ -24,11 +28,6 @@ import ch.jamiete.hilda.commands.ChannelSubCommand;
 import ch.jamiete.hilda.vote.Vote;
 import ch.jamiete.hilda.vote.VotePlugin;
 import ch.jamiete.hilda.vote.VoteResponse;
-import net.dv8tion.jda.core.EmbedBuilder;
-import net.dv8tion.jda.core.MessageBuilder;
-import net.dv8tion.jda.core.MessageBuilder.Formatting;
-import net.dv8tion.jda.core.entities.Member;
-import net.dv8tion.jda.core.entities.Message;
 
 public class VoteOpenCommand extends ChannelSubCommand {
     private final VotePlugin plugin;
@@ -46,7 +45,7 @@ public class VoteOpenCommand extends ChannelSubCommand {
     public void execute(final Message message, final String[] arguments, final String label) {
         final Member member = message.getGuild().getMember(message.getAuthor());
 
-        final ArrayList<Vote> eligible = new ArrayList<Vote>();
+        final ArrayList<Vote> eligible = new ArrayList<>();
         for (final Vote vote : this.plugin.getVotes()) {
             if (this.hilda.getBot().getTextChannelById(vote.getChannelId()).getGuild() == message.getGuild() && this.hilda.getBot().getTextChannelById(vote.getChannelId()) == message.getTextChannel()) {
                 eligible.add(vote);
@@ -75,8 +74,8 @@ public class VoteOpenCommand extends ChannelSubCommand {
         for (final Vote vote : eligible) {
             final MessageBuilder mb = new MessageBuilder();
 
-            mb.append("ID ").append(vote.getId(), Formatting.ITALICS).append("\n");
-            mb.append("Opened by ").append(vote.getOpener(), Formatting.ITALICS).append("\n");
+            mb.append("ID ").append(vote.getId(), MessageBuilder.Formatting.ITALICS).append("\n");
+            mb.append("Opened by ").append(vote.getOpener(), MessageBuilder.Formatting.ITALICS).append("\n");
             mb.append("Received ").append(vote.getResponses().size()).append(" ").append(vote.getResponses().size() == 1 ? "response" : "responses");
 
             if (!vote.getResponses().isEmpty()) {

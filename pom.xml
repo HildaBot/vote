@@ -18,7 +18,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>ch.jamiete.hilda</groupId>
 	<artifactId>vote</artifactId>
-	<version>1.0.5</version>
+	<version>1.0.6</version>
   <build>
     <sourceDirectory>src</sourceDirectory>
     <plugins>

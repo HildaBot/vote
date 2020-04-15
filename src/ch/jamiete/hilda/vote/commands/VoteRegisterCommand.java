@@ -16,15 +16,17 @@
 package ch.jamiete.hilda.vote.commands;
 
 import java.util.Arrays;
+import java.util.Collections;
+
 import ch.jamiete.hilda.Hilda;
 import ch.jamiete.hilda.commands.ChannelSeniorCommand;
 import ch.jamiete.hilda.commands.ChannelSubCommand;
 import ch.jamiete.hilda.vote.Vote;
 import ch.jamiete.hilda.vote.VotePlugin;
 import ch.jamiete.hilda.vote.VoteResponse;
-import net.dv8tion.jda.core.MessageBuilder;
-import net.dv8tion.jda.core.entities.Member;
-import net.dv8tion.jda.core.entities.Message;
+import net.dv8tion.jda.api.MessageBuilder;
+import net.dv8tion.jda.api.entities.Member;
+import net.dv8tion.jda.api.entities.Message;
 
 public class VoteRegisterCommand extends ChannelSubCommand {
     private final VotePlugin plugin;
@@ -36,7 +38,7 @@ public class VoteRegisterCommand extends ChannelSubCommand {
 
         this.setName("register");
         this.setDescription("Registers a vote.");
-        this.setAliases(Arrays.asList(new String[] { "r" }));
+        this.setAliases(Collections.singletonList("r"));
     }
 
     @Override
@@ -54,7 +56,8 @@ public class VoteRegisterCommand extends ChannelSubCommand {
 
         try {
             response = VoteResponse.valueOf(arguments[1].toUpperCase());
-        } catch (final IllegalArgumentException e) {
+        } catch (final IllegalArgumentException ignored) {
+            // Ignored
         }
 
         if (response == null) {

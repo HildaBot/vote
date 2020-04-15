@@ -16,6 +16,10 @@
 package ch.jamiete.hilda.vote.commands;
 
 import java.util.ArrayList;
+import net.dv8tion.jda.api.EmbedBuilder;
+import net.dv8tion.jda.api.MessageBuilder;
+import net.dv8tion.jda.api.Permission;
+import net.dv8tion.jda.api.entities.Message;
 import org.apache.commons.lang3.StringUtils;
 import ch.jamiete.hilda.Hilda;
 import ch.jamiete.hilda.commands.ChannelSeniorCommand;
@@ -23,11 +27,6 @@ import ch.jamiete.hilda.commands.ChannelSubCommand;
 import ch.jamiete.hilda.vote.Vote;
 import ch.jamiete.hilda.vote.VotePlugin;
 import ch.jamiete.hilda.vote.VoteResponse;
-import net.dv8tion.jda.core.EmbedBuilder;
-import net.dv8tion.jda.core.MessageBuilder;
-import net.dv8tion.jda.core.MessageBuilder.Formatting;
-import net.dv8tion.jda.core.Permission;
-import net.dv8tion.jda.core.entities.Message;
 
 public class VoteServerlistCommand extends ChannelSubCommand {
     private final VotePlugin plugin;
@@ -44,7 +43,7 @@ public class VoteServerlistCommand extends ChannelSubCommand {
 
     @Override
     public void execute(final Message message, final String[] arguments, final String label) {
-        final ArrayList<Vote> eligible = new ArrayList<Vote>();
+        final ArrayList<Vote> eligible = new ArrayList<>();
         for (final Vote vote : this.plugin.getVotes()) {
             if (this.hilda.getBot().getTextChannelById(vote.getChannelId()).getGuild() == message.getGuild()) {
                 eligible.add(vote);
@@ -63,9 +62,9 @@ public class VoteServerlistCommand extends ChannelSubCommand {
         for (final Vote vote : eligible) {
             final MessageBuilder mb = new MessageBuilder();
 
-            mb.append("ID ").append(vote.getId(), Formatting.ITALICS).append("\n");
-            mb.append("Opened in ").append(this.hilda.getBot().getTextChannelById(vote.getChannelId()).getName(), Formatting.ITALICS);
-            mb.append(" by ").append(vote.getOpener(), Formatting.ITALICS).append("\n");
+            mb.append("ID ").append(vote.getId(), MessageBuilder.Formatting.ITALICS).append("\n");
+            mb.append("Opened in ").append(this.hilda.getBot().getTextChannelById(vote.getChannelId()).getName(), MessageBuilder.Formatting.ITALICS);
+            mb.append(" by ").append(vote.getOpener(), MessageBuilder.Formatting.ITALICS).append("\n");
             mb.append("Received ").append(vote.getResponses().size()).append(" ").append(vote.getResponses().size() == 1 ? "response" : "responses");
 
             if (!vote.getResponses().isEmpty()) {

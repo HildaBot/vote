@@ -19,6 +19,10 @@ import java.awt.Color;
 import java.util.Arrays;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
+import net.dv8tion.jda.api.EmbedBuilder;
+import net.dv8tion.jda.api.Permission;
+import net.dv8tion.jda.api.entities.Member;
+import net.dv8tion.jda.api.entities.Message;
 import org.apache.commons.lang3.StringUtils;
 import ch.jamiete.hilda.Hilda;
 import ch.jamiete.hilda.Util;
@@ -28,10 +32,6 @@ import ch.jamiete.hilda.commands.CommandManager;
 import ch.jamiete.hilda.vote.Vote;
 import ch.jamiete.hilda.vote.VotePlugin;
 import ch.jamiete.hilda.vote.VoteTimer;
-import net.dv8tion.jda.core.EmbedBuilder;
-import net.dv8tion.jda.core.Permission;
-import net.dv8tion.jda.core.entities.Member;
-import net.dv8tion.jda.core.entities.Message;
 
 public class VoteStartCommand extends ChannelSubCommand {
     private final VotePlugin plugin;
@@ -43,7 +43,7 @@ public class VoteStartCommand extends ChannelSubCommand {
 
         this.setName("start");
         this.setDescription("Creates a vote.");
-        this.setAliases(Arrays.asList(new String[] { "create", "new" }));
+        this.setAliases(Arrays.asList("create", "new"));
     }
 
     @Override

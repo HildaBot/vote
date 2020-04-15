@@ -35,7 +35,7 @@ import ch.jamiete.hilda.vote.commands.VoteBaseCommand;
 public class VotePlugin extends HildaPlugin {
     public static final long MAXIMUM_LENGTH = 129600000; // 36 hours
 
-    private final ArrayList<Vote> votes = new ArrayList<Vote>();
+    private final ArrayList<Vote> votes = new ArrayList<>();
 
     public VotePlugin(final Hilda hilda) {
         super(hilda);
@@ -60,7 +60,7 @@ public class VotePlugin extends HildaPlugin {
         final String numbers = "23456789";
         final Random random = new Random();
 
-        final String possibleid = String.valueOf(alphabet.charAt(random.nextInt(alphabet.length()))) + String.valueOf(numbers.charAt(random.nextInt(numbers.length())));
+        final String possibleid = String.valueOf(alphabet.charAt(random.nextInt(alphabet.length())) + numbers.charAt(random.nextInt(numbers.length())));
 
         for (final Vote vote : this.votes) {
             if (vote.getId().equals(possibleid)) {
@@ -106,7 +106,7 @@ public class VotePlugin extends HildaPlugin {
             return;
         }
 
-        final ArrayList<Vote> loaded = new ArrayList<Vote>();
+        final ArrayList<Vote> loaded = new ArrayList<>();
         int ended = 0;
         int rejected = 0;
 
